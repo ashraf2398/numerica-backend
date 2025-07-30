@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "4e5f6g7h-8i9j-0k1l-2m3n-4o5p6q7r8s9t",
+		"name": "Dashboard Statistics API",
+		"description": "API endpoints for dashboard statistics and analytics",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Dashboard Statistics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/admin/dashboard/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"admin",
+						"dashboard",
+						"stats"
+					]
+				},
+				"description": "Get comprehensive statistics for all entities in the system"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Entity Statistics by Date Range",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/admin/dashboard/stats/entity?entity=consultation_requests&start_date=2024-01-01&end_date=2024-01-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"admin",
+						"dashboard",
+						"stats",
+						"entity"
+					],
+					"query": [
+						{
+							"key": "entity",
+							"value": "consultation_requests",
+							"description": "The entity to get statistics for"
+						},
+						{
+							"key": "start_date",
+							"value": "2024-01-01",
+							"description": "Start date in ISO format (YYYY-MM-DD)"
+						},
+						{
+							"key": "end_date",
+							"value": "2024-01-31",
+							"description": "End date in ISO format (YYYY-MM-DD)"
+						}
+					]
+				},
+				"description": "Get statistics for a specific entity grouped by date within a date range"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Team Members Statistics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/admin/dashboard/stats/entity?entity=team_members&start_date=2024-01-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"admin",
+						"dashboard",
+						"stats",
+						"entity"
+					],
+					"query": [
+						{
+							"key": "entity",
+							"value": "team_members",
+							"description": "The entity to get statistics for"
+						},
+						{
+							"key": "start_date",
+							"value": "2024-01-01",
+							"description": "Start date in ISO format (YYYY-MM-DD)"
+						}
+					]
+				},
+				"description": "Get team members statistics from a specific start date"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Articles Statistics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/admin/dashboard/stats/entity?entity=articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"admin",
+						"dashboard",
+						"stats",
+						"entity"
+					],
+					"query": [
+						{
+							"key": "entity",
+							"value": "articles",
+							"description": "The entity to get statistics for"
+						}
+					]
+				},
+				"description": "Get all articles statistics (no date range)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Services Statistics by Date Range",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/admin/dashboard/stats/entity?entity=services&start_date=2024-01-01&end_date=2024-12-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"admin",
+						"dashboard",
+						"stats",
+						"entity"
+					],
+					"query": [
+						{
+							"key": "entity",
+							"value": "services",
+							"description": "The entity to get statistics for"
+						},
+						{
+							"key": "start_date",
+							"value": "2024-01-01",
+							"description": "Start date in ISO format (YYYY-MM-DD)"
+						},
+						{
+							"key": "end_date",
+							"value": "2024-12-31",
+							"description": "End date in ISO format (YYYY-MM-DD)"
+						}
+					]
+				},
+				"description": "Get services statistics for the entire year 2024"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "authToken",
+			"value": "YOUR_JWT_TOKEN_HERE",
+			"type": "string"
+		}
+	]
+} 

@@ -1,0 +1,328 @@
+{
+  "info": {
+    "name": "Testimonials API Collection",
+    "description": "Complete collection for testing Testimonials API with image upload support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{jwt_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3001/api",
+      "type": "string"
+    },
+    {
+      "key": "jwt_token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "testimonial_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Admin Endpoints",
+      "item": [
+        {
+          "name": "Get All Testimonials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/testimonials",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "testimonials"]
+            },
+            "description": "Retrieve all testimonials ordered by display_order"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Testimonial by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/testimonials/{{testimonial_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "testimonials", "{{testimonial_id}}"]
+            },
+            "description": "Retrieve a specific testimonial by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Testimonial with Image Upload",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "John Smith",
+                  "type": "text",
+                  "description": "Required: The person's name"
+                },
+                {
+                  "key": "content",
+                  "value": "Numérica has been handling our company taxes for the past 5 years. Their expertise and attention to detail have saved us thousands of dollars and countless hours of stress.",
+                  "type": "text",
+                  "description": "Required: The testimonial content"
+                },
+                {
+                  "key": "company",
+                  "value": "Tech Solutions Inc.",
+                  "type": "text",
+                  "description": "Required: The company name"
+                },
+                {
+                  "key": "position",
+                  "value": "CEO",
+                  "type": "text",
+                  "description": "Optional: The person's position/title"
+                },
+                {
+                  "key": "display_order",
+                  "value": "1",
+                  "type": "text",
+                  "description": "Optional: Display order (auto-assigned if not provided)"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "description": "Optional: Image file to upload (jpg, jpeg, png, gif, webp, svg)"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/testimonials",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "testimonials"]
+            },
+            "description": "Create a new testimonial with image upload"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Testimonial with Image URL",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Jane Doe",
+                  "type": "text",
+                  "description": "Required: The person's name"
+                },
+                {
+                  "key": "content",
+                  "value": "Excellent service and professional team. Highly recommended!",
+                  "type": "text",
+                  "description": "Required: The testimonial content"
+                },
+                {
+                  "key": "company",
+                  "value": "Doe Enterprises",
+                  "type": "text",
+                  "description": "Required: The company name"
+                },
+                {
+                  "key": "position",
+                  "value": "CFO",
+                  "type": "text",
+                  "description": "Optional: The person's position/title"
+                },
+                {
+                  "key": "avatar_url",
+                  "value": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+                  "type": "text",
+                  "description": "Optional: Direct image URL (alternative to file upload)"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/testimonials",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "testimonials"]
+            },
+            "description": "Create a new testimonial with image URL"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Testimonial",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "John Smith Updated",
+                  "type": "text",
+                  "description": "Optional: The person's name"
+                },
+                {
+                  "key": "content",
+                  "value": "Updated testimonial content...",
+                  "type": "text",
+                  "description": "Optional: The testimonial content"
+                },
+                {
+                  "key": "company",
+                  "value": "Tech Solutions Inc. Updated",
+                  "type": "text",
+                  "description": "Optional: The company name"
+                },
+                {
+                  "key": "position",
+                  "value": "Founder & CEO",
+                  "type": "text",
+                  "description": "Optional: The person's position/title"
+                },
+                {
+                  "key": "display_order",
+                  "value": "2",
+                  "type": "text",
+                  "description": "Optional: Display order"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/testimonials/{{testimonial_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "testimonials", "{{testimonial_id}}"]
+            },
+            "description": "Update an existing testimonial"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Testimonial with New Image",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "John Smith",
+                  "type": "text",
+                  "description": "Optional: The person's name"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "description": "Optional: New image file to upload"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/testimonials/{{testimonial_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "testimonials", "{{testimonial_id}}"]
+            },
+            "description": "Update testimonial with a new image"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Testimonial",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/testimonials/{{testimonial_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "testimonials", "{{testimonial_id}}"]
+            },
+            "description": "Delete a testimonial"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Testimonial Order",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"testimonials\": [\n    {\"id\": \"550e8400-e29b-41d4-a716-446655440000\", \"display_order\": 1},\n    {\"id\": \"550e8400-e29b-41d4-a716-446655440001\", \"display_order\": 2},\n    {\"id\": \"550e8400-e29b-41d4-a716-446655440002\", \"display_order\": 3}\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/testimonials/order",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "testimonials", "order"]
+            },
+            "description": "Update the display order of multiple testimonials"
+          },
+          "response": []
+        }
+      ],
+      "description": "Admin endpoints that require authentication"
+    },
+    {
+      "name": "Public Endpoints",
+      "item": [
+        {
+          "name": "Get All Published Testimonials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/public/testimonials",
+              "host": ["{{base_url}}"],
+              "path": ["public", "testimonials"]
+            },
+            "description": "Retrieve all published testimonials for public access"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Published Testimonial",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/admin/testimonials/{{testimonial_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "testimonials", "{{testimonial_id}}"]
+            },
+            "description": "Retrieve a specific published testimonial by ID"
+          },
+          "response": []
+        }
+      ],
+      "description": "Public endpoints that don't require authentication"
+    }
+  ]
+} 

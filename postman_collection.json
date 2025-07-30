@@ -1,0 +1,261 @@
+{
+  "info": {
+    "name": "Home Banner Image Upload API",
+    "description": "Collection for testing home banner image upload functionality",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3001/api",
+      "type": "string"
+    },
+    {
+      "key": "jwt_token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Banner with Image Upload",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Test Banner with Upload",
+              "type": "text"
+            },
+            {
+              "key": "subtitle",
+              "value": "This banner was created with an uploaded image",
+              "type": "text"
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": []
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/home-banners",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "home-banners"]
+        }
+      }
+    },
+    {
+      "name": "Create Banner with Image URL",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Test Banner with URL\",\n  \"subtitle\": \"This banner was created with an image URL\",\n  \"image_url\": \"https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/home-banners",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "home-banners"]
+        }
+      }
+    },
+    {
+      "name": "Update Banner with New Image",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Updated Banner with New Image",
+              "type": "text"
+            },
+            {
+              "key": "subtitle",
+              "value": "This banner was updated with a new uploaded image",
+              "type": "text"
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": []
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/home-banners/{{banner_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "home-banners", "{{banner_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Update Banner Text Only",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Title Only\",\n  \"subtitle\": \"Updated subtitle only\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/home-banners/{{banner_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "home-banners", "{{banner_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Get All Banners",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/admin/home-banners",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "home-banners"]
+        }
+      }
+    },
+    {
+      "name": "Update Banner Order",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"banners\": [\n    {\"id\": 4, \"order\": 1},\n    {\"id\": 3, \"order\": 2},\n    {\"id\": 5, \"order\": 3}\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/home-banners/order",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "home-banners", "order"]
+        }
+      }
+    },
+    {
+      "name": "Error Cases",
+      "item": [
+        {
+          "name": "Missing Image",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Test Banner No Image\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/home-banners",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "home-banners"]
+            }
+          }
+        },
+        {
+          "name": "Missing Title",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "subtitle",
+                  "value": "Test subtitle",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/home-banners",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "home-banners"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+} 

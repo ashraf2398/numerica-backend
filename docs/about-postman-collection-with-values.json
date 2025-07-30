@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "3d4e5f6g-7h8i-9j0k-1l2m-3n4o5p6q7r8s",
+		"name": "About API with Image Upload & Values",
+		"description": "Complete API endpoints for the About module with image upload support and Our Values section",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin Endpoints",
+			"item": [
+				{
+					"name": "Get All About Entries",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/admin/about",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"admin",
+								"about"
+							]
+						},
+						"description": "Get all about entries (published and unpublished)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create About Entry with Image Upload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "About Numérica",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Numérica is a leading tax and accounting consulting firm with over 15 years of experience serving businesses and individuals across the region.",
+									"type": "text"
+								},
+								{
+									"key": "mission",
+									"value": "To provide exceptional tax and accounting services that empower our clients to make informed financial decisions and achieve their business and personal goals.",
+									"type": "text"
+								},
+								{
+									"key": "vision",
+									"value": "To be the most trusted financial partner for businesses and individuals, known for our expertise, integrity, and commitment to client success.",
+									"type": "text"
+								},
+								{
+									"key": "is_published",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "values_title",
+									"value": "Our Core Values & Culture",
+									"type": "text"
+								},
+								{
+									"key": "values_subtitle",
+									"value": "The principles that guide our decisions and shape our company culture.",
+									"type": "text"
+								},
+								{
+									"key": "collaboration_title",
+									"value": "Collaboration",
+									"type": "text"
+								},
+								{
+									"key": "collaboration_description",
+									"value": "We believe in the power of teamwork and open communication to deliver exceptional results for our clients.",
+									"type": "text"
+								},
+								{
+									"key": "collaboration_link",
+									"value": "Learn more",
+									"type": "text"
+								},
+								{
+									"key": "integrity_title",
+									"value": "Integrity",
+									"type": "text"
+								},
+								{
+									"key": "integrity_description",
+									"value": "We operate with honesty, transparency, and the highest ethical standards in everything we do.",
+									"type": "text"
+								},
+								{
+									"key": "integrity_link",
+									"value": "Learn more",
+									"type": "text"
+								},
+								{
+									"key": "innovation_title",
+									"value": "Innovation",
+									"type": "text"
+								},
+								{
+									"key": "innovation_description",
+									"value": "We embrace change and continuously explore new ideas to deliver cutting-edge solutions.",
+									"type": "text"
+								},
+								{
+									"key": "innovation_link",
+									"value": "Learn more",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/admin/about",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"admin",
+								"about"
+							]
+						},
+						"description": "Create a new about entry with image upload and values section"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "authToken",
+			"value": "YOUR_JWT_TOKEN_HERE",
+			"type": "string"
+		},
+		{
+			"key": "aboutId",
+			"value": "550e8400-e29b-41d4-a716-446655440000",
+			"type": "string"
+		}
+	]
+} 

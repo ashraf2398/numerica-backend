@@ -1,0 +1,1 @@
+ALTER TABLE about ADD COLUMN mission TEXT; ALTER TABLE about ADD COLUMN vision TEXT;
